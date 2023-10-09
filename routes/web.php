@@ -11,8 +11,52 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+*/  
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+//buat route ke halaman profil
+Route::get("/profil",function(){
+    return view("profil");
+});
+
+// Route::get('/mahasiswa', function(){
+//      echo "Mahasiswa";
+// });
+//route dengan parameter
+Route::get("/mahasiswa/{nama}",function($nama = "Nur"){
+    echo "<h1>halo nama saya $nama </h1>";
+});
+
+//route dengan parameter
+Route::get("/mahasiswa2/{nama?}",function($nama = "Nur"){
+    echo "<h1>halo nama saya $nama </h1>";
+});
+
+// route dengan parameter >1
+Route::get("/profil/{nama?}/{pekerjaan?}",function($nama = "Nur", $pekerjaan="Mahasiswa"){
+    echo "<h1>halo nama saya $nama. Saya adalah $pekerjaan </h1>";
+});
+
+//redirect
+Route::get("/hubungi",function(){
+    echo "<h1>hubungi kami</h1>";
+})->name("call"); //named route
+
+Route::redirect("/contact","/hubungi");
+
+Route::get("/halo",function(){
+    echo " <a href='".route('call')."'>". route('call')."</a> ";
+});
+
+Route::prefix("/dosen")->group(function(){
+    route::get("/jadwal",function(){
+        echo" <h1>Jadwal Dosen</h1> ";
+    });
+    route::get("/materi",function(){
+        echo " <h1> Materi Perkuliahan</h1> ";
+    });
+    //dan lain lain
 });
