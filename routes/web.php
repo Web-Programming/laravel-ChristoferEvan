@@ -22,10 +22,10 @@ Route::get("/profil",function(){
     return view("profil");
 });
 
-// Route::get('/mahasiswa', function(){
-//      echo "Mahasiswa";
-// });
-//route dengan parameter
+Route::get('/mahasiswa', function(){
+     echo "Mahasiswa";
+});
+// route dengan parameter
 Route::get("/mahasiswa/{nama}",function($nama = "Nur"){
     echo "<h1>halo nama saya $nama </h1>";
 });
@@ -60,3 +60,30 @@ Route::prefix("/dosen")->group(function(){
     });
     //dan lain lain
 });
+
+Route::get('/dosen/index',function(){
+    return view('dosen.index');
+});
+
+Route::get('/fakultas',function(){
+    // return view('fakultas.index',["ilkom"=>"Fakultas Ilmu Komputer dan Rekayasa"]);
+    // return view('fakultas.index',["fakultas"=>["Fakultas Ilmu Komputer dan Rekayasa"
+    // ,"Fakultas Ilm"u Ekonomi"]]);
+//    return view('fakultas.index')->with("fakultas",["Fakultas Ilmu Komputer dan Rekayasa"
+//    ,"Fakultas Ilmu Komputer"]); 
+// $fakultas=["Fakultas Ilmu Komputer dan Rekayasa","Fakultas Ilmu Ekonomi"];
+// return view('fakultas.index',compact('fakultas'));
+
+// $fakultas=["Fakultas Ilmu Komputer Dan Rekayasa","Fakultas Ilmu Ekonomi"];
+// return view('fakultas.index',compact('fakultas'));
+
+// $fakultas=[];
+// return view('fakultas.index',compact('fakultas'));
+
+$kampus="Universitas Multi Data Palembang";
+// $fakultas=[];
+$fakultas=["Fakultas Ilmu Komputer dan Rekayasa","Fakultas Ilmu Ekonomi"];
+return view('fakultas.index',compact('fakultas','kampus'));
+
+});
+
