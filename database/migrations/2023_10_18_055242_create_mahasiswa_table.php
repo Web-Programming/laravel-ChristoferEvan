@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-
+            $table->timestamps();
             
         });
     }
