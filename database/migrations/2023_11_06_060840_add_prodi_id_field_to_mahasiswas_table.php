@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('mahasiswas', function (Blueprint $table) {
-            //
-        });
+            $table->foreignId('prodi_id')->after('alamat')->constrained()
+            ->onDelete('cascade')->onUpdate('cascade');
+            });
     }
 
     /**
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('mahasiswas', function (Blueprint $table) {
-            //
-        });
+            $table->dropForeign('mahasiswas_prodi_id_foreign');
+            $table->dropColumn('prodi_id');
+            });
     }
 };
