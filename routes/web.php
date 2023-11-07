@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,13 +82,14 @@ Route::get('/fakultas',function(){
 
 // $fakultas=[];
 // return view('fakultas.index',compact('fakultas'));
-
+});
 $kampus="Universitas Multi Data Palembang";
 // $fakultas=[];
 $fakultas=["Fakultas Ilmu Komputer dan Rekayasa","Fakultas Ilmu Ekonomi"];
 return view('fakultas.index',compact('fakultas','kampus'));
 
-Route::get('/prodi/all-join-facade', [ProdiController::class, 'allJoinFacade’]);
+Route::get('/prodi/all-join-facade', [ProdiController::class, 'allJoinFacade']);
 
-});
+Route::get('/prodi/all-join-elq',[ProdiController::class,'allJoinElq']);
 
+Route::get('/mahasiswa/all-join-elq', [MahasiswaController::class, 'allJoinElq']);
