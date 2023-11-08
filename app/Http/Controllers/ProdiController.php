@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prodi;
 
 use Illuminate\http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProdiController extends Controller{
     public function index(){
