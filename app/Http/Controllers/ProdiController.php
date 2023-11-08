@@ -15,7 +15,7 @@ class ProdiController extends Controller{
 
     public function allJoinFacade(){
         $kampus= "Universitas Multi Data Palembang";
-        $result = DB::select('sekect mahasiswas.*, prodis.nama as nama_prodi from prodis, mahasiswas where prodis.id = mahasiswas.prodi_id');
+        $result = DB::select('select mahasiswa.*, prodis.nama as nama_prodi from prodis, mahasiswa where prodis.id = mahasiswa.prodi_id');
         return view('prodi.index',['allmahasiswaprodi' => $result, 'kampus'=> $kampus]);
     }
 
@@ -29,6 +29,27 @@ class ProdiController extends Controller{
             }
             echo "<hr>";
         }
+    }
+
+    public function create(){
+        return view('prodi.create');
+    }
+
+    public function store(Request $request){
+        // dump($request);
+        // echo $request->nama;
+
+        $validateData = $request->validate([
+            'nama' => 'required|min:5|max:20'
+        ]);
+        // dump($validateData);
+        // echo $validateData['nama'];
+        $prodi=new Prodi();
+        $prodi->nama=$validateData['nama'];
+        $prodi->save();
+
+        $request->session()->flash('info',"Data prodi $prodi->nama berhasil disimpan ke database");
+        return redirect()->route('prodi.create');
     }
 }
 

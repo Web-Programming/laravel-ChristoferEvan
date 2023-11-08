@@ -8,7 +8,7 @@ class MahasiswaController extends Controller
 {
     public function allJoinElq(){
         $kampus ="Universitas Multi Data Palembang";
-        $mahasiswas = Mahasiswa::has('prodi')->get();
-        return view('mahasiswa.index',['allmahasiswa'=>$mahasiswas, 'kampus' =>$kampus]);
+        $mahasiswa = Mahasiswa::has('prodi')->get();
+        return view('mahasiswa.index',['allmahasiswa'=>$mahasiswa, 'kampus' =>$kampus]);
     }
 }

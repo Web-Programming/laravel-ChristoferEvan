@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,19 +28,19 @@ Route::get('/mahasiswa', function(){
      echo "Mahasiswa";
 });
 // route dengan parameter
-Route::get("/mahasiswa/{nama}",function($nama = "Nur"){
-    echo "<h1>halo nama saya $nama </h1>";
-});
+// Route::get("/mahasiswa/{nama}",function($nama = "Nur"){
+//     echo "<h1>halo nama saya $nama </h1>";
+// });
 
 //route dengan parameter
-Route::get("/mahasiswa2/{nama?}",function($nama = "Nur"){
-    echo "<h1>halo nama saya $nama </h1>";
-});
+// Route::get("/mahasiswa2/{nama?}",function($nama = "Nur"){
+//     echo "<h1>halo nama saya $nama </h1>";
+// });
 
 // route dengan parameter >1
-Route::get("/profil/{nama?}/{pekerjaan?}",function($nama = "Nur", $pekerjaan="Mahasiswa"){
-    echo "<h1>halo nama saya $nama. Saya adalah $pekerjaan </h1>";
-});
+// Route::get("/profil/{nama?}/{pekerjaan?}",function($nama = "Nur", $pekerjaan="Mahasiswa"){
+//     echo "<h1>halo nama saya $nama. Saya adalah $pekerjaan </h1>";
+// });
 
 //redirect
 Route::get("/hubungi",function(){
@@ -83,13 +84,17 @@ Route::get('/fakultas',function(){
 // $fakultas=[];
 // return view('fakultas.index',compact('fakultas'));
 });
-$kampus="Universitas Multi Data Palembang";
-// $fakultas=[];
-$fakultas=["Fakultas Ilmu Komputer dan Rekayasa","Fakultas Ilmu Ekonomi"];
-return view('fakultas.index',compact('fakultas','kampus'));
+// $kampus="Universitas Multi Data Palembang";
+// // $fakultas=[];
+// $fakultas=["Fakultas Ilmu Komputer dan Rekayasa","Fakultas Ilmu Ekonomi"];
+// return view('fakultas.index',compact('fakultas','kampus'));
 
 Route::get('/prodi/all-join-facade', [ProdiController::class, 'allJoinFacade']);
 
 Route::get('/prodi/all-join-elq',[ProdiController::class,'allJoinElq']);
 
 Route::get('/mahasiswa/all-join-elq', [MahasiswaController::class, 'allJoinElq']);
+
+Route::get('/prodi/create',[ProdiController::class,'create']);
+
+Route::post('prodi/store',[ProdiController::class,'store']);
