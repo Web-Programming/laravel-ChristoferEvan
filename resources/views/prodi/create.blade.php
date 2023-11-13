@@ -24,7 +24,7 @@
                     <input type="text" name="nama" id="nama" class="from-control"
                     value="{{old('nama')}}">
                     @error('nama')
-                        <div class="text-danger">{{$massage}}</div>
+                        <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Simpan</button>
