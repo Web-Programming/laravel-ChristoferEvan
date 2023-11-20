@@ -17,13 +17,20 @@
                     {{session()->get('info')}}
                 </div>
                 @endif
-                <form action="{{url('prodi/store')}}" method="post">
+                <form action="{{url('prodi/store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" name="nama" id="nama" class="from-control"
                     value="{{old('nama')}}">
                     @error('nama')
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto/logo</label>
+                    <input type="file" name="foto" id="foto" class="from-control">
+                    @error('foto')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
